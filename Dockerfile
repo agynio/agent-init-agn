@@ -15,4 +15,4 @@ RUN apk add --no-cache curl && \
 
 COPY config.json /tools/config.json
 
-ENTRYPOINT ["cp", "-a", "/tools/.", "/agyn-bin/"]
+ENTRYPOINT ["cp", "-a", "/tools/.", "/agyn/bin/"]
