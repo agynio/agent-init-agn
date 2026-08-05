@@ -13,6 +13,7 @@ RUN apk add --no-cache curl && \
       -o /tools/agn && \
     chmod +x /tools/agn
 
-COPY config.json /tools/config.json
+# Outside /tools: the binaries land in /agyn/bin, the config beside them.
+COPY config.json /config.json
 
-ENTRYPOINT ["cp", "-a", "/tools/.", "/agyn/bin/"]
+ENTRYPOINT ["/bin/sh", "-c", "set -e; mkdir -p /agyn/bin; cp -a /tools/. /agyn/bin/; cp /config.json /agyn/config.json; chmod 0644 /agyn/config.json"]
